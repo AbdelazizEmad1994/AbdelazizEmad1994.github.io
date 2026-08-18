@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { HOW_I_WORK_STEPS, SAMPLE_BPMN_FLOW } from '../data/portfolioData';
 import { FileCode, GitBranch, ListTodo, Search, ArrowRight, CheckCircle2, ChevronRight, Layers, Workflow, Info } from 'lucide-react';
 
@@ -10,32 +11,38 @@ export const HowIWork: React.FC = () => {
   const selectedStepData = HOW_I_WORK_STEPS.find((s) => s.id === activeStep) || HOW_I_WORK_STEPS[0];
 
   return (
-    <section id="how-i-work" className="py-20 bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="how-i-work" className="py-20 bg-white dark:bg-[#0B1329] border-b border-slate-200 dark:border-slate-800 overflow-visible transition-colors duration-200">
+      <motion.div
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] }}
+      >
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div className="space-y-2">
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#1E8C7C] bg-[#1E8C7C]/10 px-3 py-1 rounded-full border border-[#1E8C7C]/20 inline-block">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#1E8C7C] dark:text-teal-400 bg-[#1E8C7C]/10 dark:bg-teal-400/10 px-3 py-1 rounded-full border border-[#1E8C7C]/20 dark:border-teal-400/20 inline-block">
               Proof of Process
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#12233F] tracking-tight font-display mt-1">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#12233F] dark:text-white tracking-tight font-display mt-1">
               What I Actually Do Day to Day
             </h2>
             <div className="h-1 w-12 bg-[#1E8C7C] rounded-full my-2" />
-            <p className="text-slate-600 text-sm mt-1 max-w-xl">
+            <p className="text-slate-600 dark:text-slate-300 text-sm mt-1 max-w-xl">
               A breakdown of my day-to-day product management workflow — from initial stakeholder workshops to detailed technical acceptance criteria.
             </p>
           </div>
 
           {/* Toggle View Mode */}
-          <div className="inline-flex p-1 bg-slate-100 rounded-xl border border-slate-200 text-xs font-semibold">
+          <div className="inline-flex p-1 bg-slate-100 dark:bg-[#132244] rounded-xl border border-slate-200 dark:border-slate-700 text-xs font-semibold">
             <button
               onClick={() => setActiveTab('cards')}
               className={`px-4 py-2 rounded-lg transition-all flex items-center gap-1.5 ${
                 activeTab === 'cards'
-                  ? 'bg-[#12233F] text-white shadow-2xs'
-                  : 'text-slate-600 hover:text-[#12233F]'
+                  ? 'bg-[#12233F] dark:bg-[#1E8C7C] text-white shadow-2xs'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-[#12233F] dark:hover:text-white'
               }`}
             >
               <Layers className="w-3.5 h-3.5" />
@@ -45,11 +52,11 @@ export const HowIWork: React.FC = () => {
               onClick={() => setActiveTab('diagram')}
               className={`px-4 py-2 rounded-lg transition-all flex items-center gap-1.5 ${
                 activeTab === 'diagram'
-                  ? 'bg-[#12233F] text-white shadow-2xs'
-                  : 'text-slate-600 hover:text-[#12233F]'
+                  ? 'bg-[#12233F] dark:bg-[#1E8C7C] text-white shadow-2xs'
+                  : 'text-slate-600 dark:text-slate-300 hover:text-[#12233F] dark:hover:text-white'
               }`}
             >
-              <Workflow className="w-3.5 h-3.5 text-[#1E8C7C]" />
+              <Workflow className="w-3.5 h-3.5 text-[#1E8C7C] dark:text-teal-300" />
               <span>Sample BPMN Clinical Flow</span>
             </button>
           </div>
@@ -69,23 +76,23 @@ export const HowIWork: React.FC = () => {
                     onClick={() => setActiveStep(step.id)}
                     className={`p-5 rounded-2xl border transition-all cursor-pointer ${
                       isActive
-                        ? 'bg-[#12233F] text-white border-[#12233F] shadow-lg scale-[1.01]'
-                        : 'bg-[#FAFAFA] text-[#12233F] border-slate-200 hover:border-slate-300 hover:bg-white'
+                        ? 'bg-[#12233F] dark:bg-[#162950] text-white border-[#12233F] dark:border-teal-500 shadow-lg scale-[1.01]'
+                        : 'bg-[#FAFAFA] dark:bg-[#132244] text-[#12233F] dark:text-white border-slate-200 dark:border-slate-700/80 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-white dark:hover:bg-[#16274e]'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-2">
                       <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${
-                        isActive ? 'bg-[#1E8C7C] text-white' : 'bg-slate-200 text-slate-700'
+                        isActive ? 'bg-[#1E8C7C] text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200'
                       }`}>
                         Step {step.number}
                       </span>
-                      <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#1E8C7C]' : 'text-slate-400'}`} />
+                      <ChevronRight className={`w-4 h-4 ${isActive ? 'text-[#1E8C7C] dark:text-teal-400' : 'text-slate-400'}`} />
                     </div>
 
                     <h3 className="font-bold text-base font-display mb-1">
                       {step.title}
                     </h3>
-                    <p className={`text-xs line-clamp-2 ${isActive ? 'text-slate-300' : 'text-slate-600'}`}>
+                    <p className={`text-xs line-clamp-2 ${isActive ? 'text-slate-300' : 'text-slate-600 dark:text-slate-300'}`}>
                       {step.summary}
                     </p>
                   </div>
@@ -94,31 +101,31 @@ export const HowIWork: React.FC = () => {
             </div>
 
             {/* Detailed View Card */}
-            <div className="lg:col-span-7 bg-[#FAFAFA] p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-xs space-y-6">
-              <div className="flex items-center justify-between border-b border-slate-200 pb-4">
+            <div className="lg:col-span-7 bg-[#FAFAFA] dark:bg-[#132244] p-6 sm:p-8 rounded-3xl border border-slate-200 dark:border-slate-700/80 shadow-xs space-y-6">
+              <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700/60 pb-4">
                 <div>
-                  <span className="text-xs font-bold text-[#1E8C7C] uppercase tracking-wider font-display">
+                  <span className="text-xs font-bold text-[#1E8C7C] dark:text-teal-400 uppercase tracking-wider font-display">
                     Process Step {selectedStepData.number} Deep-Dive
                   </span>
-                  <h3 className="text-2xl font-bold text-[#12233F] font-display mt-0.5">
+                  <h3 className="text-2xl font-bold text-[#12233F] dark:text-white font-display mt-0.5">
                     {selectedStepData.title}
                   </h3>
                 </div>
               </div>
 
-              <p className="text-slate-700 text-base leading-relaxed">
+              <p className="text-slate-700 dark:text-slate-200 text-base leading-relaxed">
                 {selectedStepData.summary}
               </p>
 
               {/* Deliverables Produced */}
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 font-display">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 font-display">
                   Core Deliverables Produced:
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {selectedStepData.deliverables.map((del, i) => (
-                    <div key={i} className="bg-white p-3 rounded-xl border border-slate-200 text-xs font-semibold text-[#12233F] flex items-center gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-[#1E8C7C] shrink-0" />
+                    <div key={i} className="bg-white dark:bg-[#0F1A34] p-3 rounded-xl border border-slate-200 dark:border-slate-700/80 text-xs font-semibold text-[#12233F] dark:text-slate-100 flex items-center gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-[#1E8C7C] dark:text-teal-400 shrink-0" />
                       <span>{del}</span>
                     </div>
                   ))}
@@ -127,12 +134,12 @@ export const HowIWork: React.FC = () => {
 
               {/* Tools Used */}
               <div>
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2 font-display">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 font-display">
                   Primary Tools &amp; Methods:
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {selectedStepData.toolsUsed.map((tool, i) => (
-                    <span key={i} className="bg-slate-200 text-slate-800 text-xs font-medium px-3 py-1 rounded-lg">
+                    <span key={i} className="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-medium px-3 py-1 rounded-lg">
                       {tool}
                     </span>
                   ))}
@@ -140,8 +147,8 @@ export const HowIWork: React.FC = () => {
               </div>
 
               {/* Practical Note */}
-              <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200/80 text-amber-900 text-xs flex items-start gap-3">
-                <Info className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+              <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200/80 dark:border-amber-800/60 text-amber-900 dark:text-amber-200 text-xs flex items-start gap-3">
+                <Info className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
                 <div>
                   <strong className="block font-bold mb-0.5">How this applies in production:</strong>
                   <span>{selectedStepData.detailNote}</span>
@@ -153,7 +160,7 @@ export const HowIWork: React.FC = () => {
           </div>
         ) : (
           /* BPMN Diagram View */
-          <div className="bg-[#12233F] text-white p-6 sm:p-8 rounded-3xl border border-[#12233F] shadow-xl space-y-6">
+          <div className="bg-[#12233F] dark:bg-[#070E20] text-white p-6 sm:p-8 rounded-3xl border border-[#12233F] dark:border-slate-800 shadow-xl space-y-6">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-4">
               <div>
                 <span className="text-xs font-bold text-teal-400 uppercase tracking-wider font-display">
@@ -235,7 +242,7 @@ export const HowIWork: React.FC = () => {
           </div>
         )}
 
-      </div>
+      </motion.div>
     </section>
   );
 };

@@ -46,11 +46,11 @@ Arabic (Native), English (Fluent)
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-white text-[#12233F] w-full max-w-4xl max-h-[92vh] rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-slate-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="bg-white dark:bg-[#0E172E] text-[#12233F] dark:text-white w-full max-w-4xl max-h-[92vh] rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col border border-slate-200 dark:border-slate-700">
         
         {/* Modal Top Header Bar */}
-        <div className="p-4 sm:p-5 bg-[#12233F] text-white flex flex-wrap items-center justify-between gap-3 border-b border-white/10 shrink-0">
+        <div className="p-4 sm:p-5 bg-[#12233F] dark:bg-[#070E20] text-white flex flex-wrap items-center justify-between gap-3 border-b border-white/10 shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#1E8C7C] flex items-center justify-center font-bold text-sm text-white shrink-0">
               AE
@@ -105,28 +105,28 @@ Arabic (Native), English (Fluent)
         </div>
 
         {/* Modal Scrollable Resume Content */}
-        <div className="p-6 sm:p-10 overflow-y-auto space-y-6 text-slate-800 text-xs sm:text-sm print:p-0">
+        <div className="p-6 sm:p-10 overflow-y-auto space-y-6 text-slate-800 dark:text-slate-200 text-xs sm:text-sm print:p-0">
           
           {/* Resume Header Block */}
-          <div className="text-center border-b border-slate-200 pb-6 space-y-2">
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#12233F] tracking-tight font-display">
+          <div className="text-center border-b border-slate-200 dark:border-slate-700/80 pb-6 space-y-2">
+            <h1 className="text-2xl sm:text-3xl font-extrabold text-[#12233F] dark:text-white tracking-tight font-display">
               {PERSONAL_INFO.name}
             </h1>
-            <p className="text-base font-bold text-[#1E8C7C] font-display">
+            <p className="text-base font-bold text-[#1E8C7C] dark:text-teal-400 font-display">
               {PERSONAL_INFO.roleSubline}
             </p>
             
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-600 font-medium pt-2">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-slate-600 dark:text-slate-400 font-medium pt-2">
               <span className="flex items-center gap-1">
-                <Mail className="w-3.5 h-3.5 text-[#1E8C7C]" />
+                <Mail className="w-3.5 h-3.5 text-[#1E8C7C] dark:text-teal-400" />
                 <a href={`mailto:${PERSONAL_INFO.email}`} className="hover:underline">{PERSONAL_INFO.email}</a>
               </span>
               <span className="flex items-center gap-1">
-                <Phone className="w-3.5 h-3.5 text-[#1E8C7C]" />
+                <Phone className="w-3.5 h-3.5 text-[#1E8C7C] dark:text-teal-400" />
                 <a href={`tel:${PERSONAL_INFO.phoneRaw}`} className="hover:underline">{PERSONAL_INFO.phone}</a>
               </span>
               <span className="flex items-center gap-1">
-                <MapPin className="w-3.5 h-3.5 text-[#1E8C7C]" />
+                <MapPin className="w-3.5 h-3.5 text-[#1E8C7C] dark:text-teal-400" />
                 {PERSONAL_INFO.location}
               </span>
             </div>
@@ -134,10 +134,10 @@ Arabic (Native), English (Fluent)
 
           {/* Profile Summary */}
           <div className="space-y-2">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-[#12233F] font-display border-b border-slate-200 pb-1">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-[#12233F] dark:text-teal-400 font-display border-b border-slate-200 dark:border-slate-700/80 pb-1">
               Profile Summary
             </h2>
-            <div className="space-y-2 text-slate-700 leading-relaxed text-xs sm:text-sm">
+            <div className="space-y-2 text-slate-700 dark:text-slate-300 leading-relaxed text-xs sm:text-sm">
               {PERSONAL_INFO.aboutParagraphs.map((paragraph, idx) => (
                 <p key={idx}>{paragraph}</p>
               ))}
@@ -146,21 +146,21 @@ Arabic (Native), English (Fluent)
 
           {/* Professional Experience */}
           <div className="space-y-4">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-[#12233F] font-display border-b border-slate-200 pb-1">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-[#12233F] dark:text-teal-400 font-display border-b border-slate-200 dark:border-slate-700/80 pb-1">
               Professional Experience
             </h2>
 
             <div className="space-y-6">
               {EXPERIENCES.map((exp) => (
                 <div key={exp.id} className="space-y-2">
-                  <div className="flex flex-wrap items-baseline justify-between gap-2 border-l-2 border-[#1E8C7C] pl-3 py-0.5">
-                    <h3 className="text-sm font-bold text-[#12233F]">
-                      {exp.role} <span className="text-slate-500 font-normal">| {exp.company}</span>
+                  <div className="flex flex-wrap items-baseline justify-between gap-2 border-l-2 border-[#1E8C7C] dark:border-teal-400 pl-3 py-0.5">
+                    <h3 className="text-sm font-bold text-[#12233F] dark:text-white">
+                      {exp.role} <span className="text-slate-500 dark:text-slate-400 font-normal">| {exp.company}</span>
                     </h3>
-                    <span className="text-xs font-semibold text-slate-500">{exp.period}</span>
+                    <span className="text-xs font-semibold text-slate-500 dark:text-slate-400">{exp.period}</span>
                   </div>
 
-                  <ul className="space-y-1.5 text-xs text-slate-700 list-disc pl-5">
+                  <ul className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300 list-disc pl-5">
                     {exp.bullets.map((bullet, i) => (
                       <li key={i} className="leading-relaxed">{bullet}</li>
                     ))}
@@ -172,20 +172,20 @@ Arabic (Native), English (Fluent)
 
           {/* Key Skills & Tools */}
           <div className="space-y-3">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-[#12233F] font-display border-b border-slate-200 pb-1">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-[#12233F] dark:text-teal-400 font-display border-b border-slate-200 dark:border-slate-700/80 pb-1">
               Key Skills &amp; Tools
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {SKILL_CATEGORIES.map((cat) => (
-                <div key={cat.title} className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
-                  <h3 className="text-xs font-bold text-[#12233F]">
+                <div key={cat.title} className="bg-slate-50 dark:bg-[#132244] p-4 rounded-xl border border-slate-200 dark:border-slate-700/80 space-y-2">
+                  <h3 className="text-xs font-bold text-[#12233F] dark:text-white">
                     {cat.title}
                   </h3>
-                  <ul className="space-y-1 text-xs text-slate-600">
+                  <ul className="space-y-1 text-xs text-slate-600 dark:text-slate-300">
                     {cat.skills.map((skill, idx) => (
                       <li key={idx} className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#1E8C7C]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#1E8C7C] dark:bg-teal-400" />
                         <span>{skill.name}</span>
                       </li>
                     ))}
@@ -197,14 +197,14 @@ Arabic (Native), English (Fluent)
 
           {/* Education */}
           <div className="space-y-2">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-[#12233F] font-display border-b border-slate-200 pb-1">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-[#12233F] dark:text-teal-400 font-display border-b border-slate-200 dark:border-slate-700/80 pb-1">
               Education
             </h2>
-            <div className="text-xs sm:text-sm text-slate-800 space-y-1">
-              <p className="font-bold text-[#12233F]">
-                B.Sc. in Business Information Systems, Faculty of Commerce, Tanta University <span className="font-normal text-slate-500">| 2014 – 2018</span>
+            <div className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 space-y-1">
+              <p className="font-bold text-[#12233F] dark:text-white">
+                B.Sc. in Business Information Systems, Faculty of Commerce, Tanta University <span className="font-normal text-slate-500 dark:text-slate-400">| 2014 – 2018</span>
               </p>
-              <p className="text-slate-600 text-xs">
+              <p className="text-slate-600 dark:text-slate-400 text-xs">
                 Graduated with Excellent degree, GPA: 3.73/4
               </p>
             </div>
@@ -212,10 +212,10 @@ Arabic (Native), English (Fluent)
 
           {/* Languages */}
           <div className="space-y-2">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-[#12233F] font-display border-b border-slate-200 pb-1">
+            <h2 className="text-xs font-bold uppercase tracking-widest text-[#12233F] dark:text-teal-400 font-display border-b border-slate-200 dark:border-slate-700/80 pb-1">
               Languages
             </h2>
-            <div className="flex gap-6 text-xs text-slate-700">
+            <div className="flex gap-6 text-xs text-slate-700 dark:text-slate-300">
               <p>• <strong>Arabic:</strong> Native</p>
               <p>• <strong>English:</strong> Fluent</p>
             </div>
@@ -224,9 +224,9 @@ Arabic (Native), English (Fluent)
         </div>
 
         {/* Footer info */}
-        <div className="p-4 bg-slate-100 text-slate-600 text-xs flex items-center justify-between border-t border-slate-200 shrink-0">
+        <div className="p-4 bg-slate-100 dark:bg-[#070E20] text-slate-600 dark:text-slate-400 text-xs flex items-center justify-between border-t border-slate-200 dark:border-slate-700/80 shrink-0">
           <div className="flex items-center gap-2">
-            <Globe className="w-4 h-4 text-[#1E8C7C]" />
+            <Globe className="w-4 h-4 text-[#1E8C7C] dark:text-teal-400" />
             <span>Official Curriculum Vitae — Abdelaziz Emad</span>
           </div>
           <a

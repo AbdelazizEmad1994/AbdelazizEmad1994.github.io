@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, FileText, Menu, X, ArrowUpRight, Zap, CheckCircle2 } from 'lucide-react';
 import { PERSONAL_INFO, RECRUITER_QUICK_FACTS } from '../data/portfolioData';
+import { ThemeToggle } from './ThemeToggle';
 
 interface HeaderProps {
   onOpenCV: () => void;
@@ -33,8 +34,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
       <header
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           isScrolled
-            ? 'bg-[#12233F]/95 backdrop-blur-md text-white py-3 shadow-lg border-b border-white/10'
-            : 'bg-transparent text-[#12233F] py-5'
+            ? 'bg-[#12233F]/95 dark:bg-[#0B1329]/95 backdrop-blur-md text-white py-3 shadow-lg border-b border-white/10 dark:border-slate-800'
+            : 'bg-transparent text-[#12233F] dark:text-slate-100 py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -47,16 +48,16 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
               className={`w-9 h-9 rounded-lg flex items-center justify-center font-bold text-sm tracking-tight transition-transform group-hover:scale-105 ${
                 isScrolled
                   ? 'bg-[#1E8C7C] text-white shadow-md'
-                  : 'bg-[#12233F] text-white'
+                  : 'bg-[#12233F] dark:bg-[#1E8C7C] text-white'
               }`}
             >
               AE
             </div>
             <div>
-              <span className={`font-bold tracking-tight text-base block font-display ${isScrolled ? 'text-white' : 'text-[#12233F]'}`}>
+              <span className={`font-bold tracking-tight text-base block font-display ${isScrolled ? 'text-white' : 'text-[#12233F] dark:text-white'}`}>
                 Abdelaziz Emad
               </span>
-              <span className={`text-xs block font-medium ${isScrolled ? 'text-slate-300' : 'text-slate-600'}`}>
+              <span className={`text-xs block font-medium ${isScrolled ? 'text-slate-300' : 'text-slate-600 dark:text-slate-300'}`}>
                 Product Owner &amp; BA
               </span>
             </div>
@@ -68,8 +69,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
               <a
                 key={link.name}
                 href={link.href}
-                className={`transition-colors duration-200 hover:text-[#1E8C7C] ${
-                  isScrolled ? 'text-slate-200 hover:text-white' : 'text-slate-700'
+                className={`transition-colors duration-200 hover:text-[#1E8C7C] dark:hover:text-teal-400 ${
+                  isScrolled ? 'text-slate-200 hover:text-white' : 'text-slate-700 dark:text-slate-200'
                 }`}
               >
                 {link.name}
@@ -78,7 +79,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
           </nav>
 
           {/* Actions */}
-          <div className="hidden sm:flex items-center gap-3">
+          <div className="hidden sm:flex items-center gap-2.5">
+            {/* Dark / Light Mode Toggle Button */}
+            <ThemeToggle isScrolled={isScrolled} />
+
             <button
               onClick={() => setShowQuickFacts(!showQuickFacts)}
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
@@ -86,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
                   ? 'bg-[#1E8C7C] text-white border-[#1E8C7C]'
                   : isScrolled
                   ? 'bg-white/10 text-white border-white/20 hover:bg-white/20'
-                  : 'bg-white text-[#12233F] border-slate-300 hover:bg-slate-50 shadow-xs'
+                  : 'bg-white dark:bg-slate-800 text-[#12233F] dark:text-slate-100 border-slate-300 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 shadow-xs'
               }`}
             >
               <Zap className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
@@ -98,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-lg border transition-all ${
                 isScrolled
                   ? 'bg-white/10 text-white border-white/20 hover:bg-white/20'
-                  : 'bg-white text-[#12233F] border-slate-300 hover:border-[#12233F]'
+                  : 'bg-white dark:bg-slate-800 text-[#12233F] dark:text-slate-100 border-slate-300 dark:border-slate-700 hover:border-[#12233F] dark:hover:border-teal-400'
               }`}
             >
               <FileText className="w-3.5 h-3.5" />
@@ -116,10 +120,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
 
           {/* Mobile menu button */}
           <div className="flex sm:hidden items-center gap-2">
+            <ThemeToggle isScrolled={isScrolled} />
+            
             <button
               onClick={() => setShowQuickFacts(!showQuickFacts)}
               className={`p-2 rounded-lg border text-xs font-semibold ${
-                isScrolled ? 'bg-white/10 text-white border-white/20' : 'bg-white text-[#12233F] border-slate-300'
+                isScrolled ? 'bg-white/10 text-white border-white/20' : 'bg-white dark:bg-slate-800 text-[#12233F] dark:text-slate-100 border-slate-300 dark:border-slate-700'
               }`}
               title="Recruiter Quick Facts"
             >
@@ -128,7 +134,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className={`p-2 rounded-lg transition-colors ${
-                isScrolled ? 'text-white hover:bg-white/10' : 'text-[#12233F] hover:bg-slate-200'
+                isScrolled ? 'text-white hover:bg-white/10' : 'text-[#12233F] dark:text-white hover:bg-slate-200 dark:hover:bg-slate-800'
               }`}
               aria-label="Toggle menu"
             >
@@ -139,9 +145,9 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
 
         {/* Quick Recruiter Facts Popover Dropdown */}
         {showQuickFacts && (
-          <div className="border-t border-slate-200/20 bg-[#12233F] text-white shadow-2xl animate-in fade-in slide-in-from-top duration-200">
+          <div className="border-t border-slate-200/20 dark:border-slate-700/40 bg-[#12233F] dark:bg-[#0B1329] text-white shadow-2xl animate-in fade-in slide-in-from-top duration-200">
             <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
+              <div className="flex items-center justify-between mb-3 border-b border-white/10 dark:border-slate-800 pb-2">
                 <div className="flex items-center gap-2">
                   <Zap className="w-4 h-4 text-amber-400 fill-amber-400" />
                   <span className="text-xs font-bold uppercase tracking-wider text-amber-300">
@@ -158,8 +164,8 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
 
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-xs">
                 {RECRUITER_QUICK_FACTS.map((fact, idx) => (
-                  <div key={idx} className="bg-white/5 p-2.5 rounded-lg border border-white/10">
-                    <span className="text-[11px] text-slate-400 block mb-0.5">{fact.label}</span>
+                  <div key={idx} className="bg-white/5 dark:bg-white/10 p-2.5 rounded-lg border border-white/10 dark:border-white/15">
+                    <span className="text-[11px] text-slate-400 dark:text-slate-300 block mb-0.5">{fact.label}</span>
                     <span className="font-semibold text-white block leading-tight">{fact.value}</span>
                   </div>
                 ))}
@@ -170,7 +176,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="sm:hidden bg-[#12233F] text-white border-t border-white/10 px-4 py-5 space-y-4 shadow-xl">
+          <div className="sm:hidden bg-[#12233F] dark:bg-[#0B1329] text-white border-t border-white/10 dark:border-slate-800 px-4 py-5 space-y-4 shadow-xl">
             <div className="grid grid-cols-1 gap-2">
               {navLinks.map((link) => (
                 <a
@@ -184,7 +190,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenCV }) => {
               ))}
             </div>
 
-            <div className="pt-3 border-t border-white/10 flex flex-col gap-2">
+            <div className="pt-3 border-t border-white/10 dark:border-slate-800 flex flex-col gap-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
